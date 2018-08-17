@@ -16,3 +16,5 @@ for account in accounts:
 
 if numberOfMails != 0:
     print("")
+else:
+    print("")
