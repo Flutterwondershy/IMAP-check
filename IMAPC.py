@@ -9,10 +9,13 @@ import time
 numberOfMails = 0
 
 for account in accounts:
-    obj = imaplib.IMAP4_SSL(account["server"], account["port"])
-    obj.login(account["login"], account["password"])
-    obj.select()
-    numberOfMails += len(obj.search(None, 'unseen')[1][0].split())
+    try:
+        obj = imaplib.IMAP4_SSL(account["server"], account["port"])
+        obj.login(account["login"], account["password"])
+        obj.select()
+        numberOfMails += len(obj.search(None, 'unseen')[1][0].split())
+    except:
+        pass
 
 if numberOfMails != 0:
     print("")
